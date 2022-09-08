@@ -1,10 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { FilteredNames } from 'redux/contacts/contacts -selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/contacts/contacts -operations';
 
 export const ContactList = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts);
+  }, [dispatch]);
+
   const contacts = useSelector(FilteredNames);
   return (
     <ul className={css.list}>
