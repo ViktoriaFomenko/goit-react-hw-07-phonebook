@@ -10,7 +10,7 @@ import { fetchContacts } from 'redux/contacts/contacts -operations';
 export const ContactList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchContacts);
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   const contacts = useSelector(FilteredNames);
